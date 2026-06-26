@@ -1,24 +1,57 @@
 import { useState } from 'react'
 
+const productLinks = [
+  { href: '#new-car-finance', label: 'New Car Loans' },
+  { href: '#used-car-finance', label: 'Used Car Loans' },
+  { href: '#loan-against-car', label: 'Loans Against Car' },
+  { href: '#personal-loan', label: 'Personal Loans' },
+]
+
 const links = [
   { href: '#home', label: 'Home' },
-  { href: '#services', label: 'Services' },
+  { href: '#emi-calculator', label: 'EMI Calculator' },
   { href: '#how-it-works', label: 'How It Works' },
-  { href: '#why-us', label: 'Why FinDrive' },
-  { href: '#apply', label: 'Apply Now' },
+  { href: '#faq', label: 'FAQ' },
 ]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [productsOpen, setProductsOpen] = useState(false)
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false)
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur shadow-sm">
-      <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-32">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
         <a href="#home" className="flex items-center gap-2">
-          <img src="/logo.png" alt="FinDrive logo" className="h-28 w-auto" />
+          <img src="/logo.png" alt="FinDrive logo" className="h-28 w-auto -my-4" />
         </a>
 
         <ul className="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-dark">
+          <li
+            className="relative"
+            onMouseEnter={() => setProductsOpen(true)}
+            onMouseLeave={() => setProductsOpen(false)}
+          >
+            <button className="flex items-center gap-1 hover:text-brand-blue transition-colors">
+              Loan Products
+              <span className={`text-xs transition-transform ${productsOpen ? 'rotate-180' : ''}`}>▾</span>
+            </button>
+            {productsOpen && (
+              <div className="absolute left-0 top-full pt-2 w-56">
+                <div className="rounded-xl bg-white shadow-lg border border-gray-100 py-2">
+                  {productLinks.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-2.5 text-sm font-medium text-brand-dark hover:bg-gray-50 hover:text-brand-blue transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </li>
           {links.map((link) => (
             <li key={link.href}>
               <a href={link.href} className="hover:text-brand-blue transition-colors">
@@ -52,10 +85,34 @@ export default function Navbar() {
 
       {open && (
         <div className="md:hidden border-t border-gray-100 bg-white px-4 pb-4">
-          <ul className="flex flex-col gap-3 pt-3 text-sm font-semibold text-brand-dark">
+          <ul className="flex flex-col gap-1 pt-3 text-sm font-semibold text-brand-dark">
+            <li>
+              <button
+                className="flex w-full items-center justify-between py-2"
+                onClick={() => setMobileProductsOpen((o) => !o)}
+              >
+                Loan Products
+                <span className={`text-xs transition-transform ${mobileProductsOpen ? 'rotate-180' : ''}`}>▾</span>
+              </button>
+              {mobileProductsOpen && (
+                <ul className="pl-3 flex flex-col gap-1 pb-1">
+                  {productLinks.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        onClick={() => setOpen(false)}
+                        className="block py-1.5 text-sm font-medium text-gray-600"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
             {links.map((link) => (
               <li key={link.href}>
-                <a href={link.href} onClick={() => setOpen(false)} className="block py-1">
+                <a href={link.href} onClick={() => setOpen(false)} className="block py-2">
                   {link.label}
                 </a>
               </li>

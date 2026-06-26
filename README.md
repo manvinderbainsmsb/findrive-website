@@ -6,8 +6,9 @@ Responsive React (Vite + TypeScript + Tailwind) marketing site with a Supabase-b
 
 1. **Add image assets**:
    - Save the FinDrive logo as `public/logo.png` (used in the navbar and footer).
-   - Save a hero background photo as `public/hero-bg.jpg`.
-   - Save feature images as `public/used-car-finance.jpg` and `public/loan-against-car.jpg`.
+   - Save feature images for each loan product as `public/new-car-finance.jpg`, `public/used-car-finance.jpg`, `public/loan-against-car.jpg`, and `public/personal-loan.jpg`. If a file is missing, that section falls back to a simple icon so the layout never breaks.
+
+2. **Set your WhatsApp number**: in `src/components/WhatsAppCta.tsx`, replace the placeholder `WHATSAPP_NUMBER` (`919876543210`) with your real number in international format, no `+` or spaces.
 
 2. **Install dependencies** (requires Node.js 18+):
    ```bash

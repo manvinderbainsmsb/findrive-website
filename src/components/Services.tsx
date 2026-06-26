@@ -1,5 +1,19 @@
 const features = [
   {
+    id: 'new-car-finance',
+    title: 'New Car Finance',
+    subtitle: 'Drive home a brand-new car with financing that fits your budget.',
+    points: [
+      'Finance up to 100% of the on-road price',
+      'Tenure up to 84 months',
+      'Special rates with leading auto manufacturers',
+    ],
+    cta: 'Explore new car finance',
+    image: '/new-car-finance.jpg',
+    fallbackIcon: '🚙',
+  },
+  {
+    id: 'used-car-finance',
     title: 'Used Car Finance',
     subtitle: 'Buy the car you want, on terms that work for you.',
     points: [
@@ -10,8 +24,10 @@ const features = [
     cta: 'Explore used car finance',
     image: '/used-car-finance.jpg',
     fallbackIcon: '🚗',
+    reverse: true,
   },
   {
+    id: 'loan-against-car',
     title: 'Loan Against Car',
     subtitle: 'Unlock the value of your car without giving it up.',
     points: [
@@ -22,6 +38,19 @@ const features = [
     cta: 'Explore loan against car',
     image: '/loan-against-car.jpg',
     fallbackIcon: '💳',
+  },
+  {
+    id: 'personal-loan',
+    title: 'Personal Loan',
+    subtitle: 'Unsecured funds for any need — no collateral required.',
+    points: [
+      'Loans up to ₹25 lakh, fully unsecured',
+      'Minimal documentation, fully digital process',
+      'Disbursal within 24 hours of approval',
+    ],
+    cta: 'Explore personal loan',
+    image: '/personal-loan.jpg',
+    fallbackIcon: '💰',
     reverse: true,
   },
 ]
@@ -29,11 +58,19 @@ const features = [
 export default function Services() {
   return (
     <section id="services" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-dark">Our Loan Products</h2>
+          <p className="mt-4 text-gray-600">
+            Whatever you're financing, FinDrive has a product built around your needs.
+          </p>
+        </div>
+        <div className="space-y-20">
         {features.map((f) => (
           <div
             key={f.title}
-            className={`grid lg:grid-cols-2 gap-10 items-center ${
+            id={f.id}
+            className={`grid lg:grid-cols-2 gap-10 items-center scroll-mt-28 ${
               f.reverse ? 'lg:[&>*:first-child]:order-2' : ''
             }`}
           >
@@ -71,6 +108,7 @@ export default function Services() {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </section>
   )
