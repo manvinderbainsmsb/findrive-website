@@ -22,7 +22,7 @@ const features = [
       'Competitive interest rates from trusted lenders',
     ],
     cta: 'Explore used car finance',
-    image: '/used-car-finance.jpg',
+    image: '/loan-against-car.jpg',
     fallbackIcon: '🚗',
     reverse: true,
   },
@@ -36,7 +36,7 @@ const features = [
       'Funds disbursed in as little as 24-48 hours',
     ],
     cta: 'Explore loan against car',
-    image: '/loan-against-car.jpg',
+    image: '/used-car-finance.jpg',
     fallbackIcon: '💳',
   },
   {
